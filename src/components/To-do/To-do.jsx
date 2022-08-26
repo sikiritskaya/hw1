@@ -22,6 +22,10 @@ const Task = styled.span`
   cursor: pointer;
 `;
 
+const CrossTask = styled.span`
+  text-decoration: line-through;
+`;
+
 const ButtonsContainer = styled.div`
   width: 50%;
   display: flex;
@@ -39,17 +43,21 @@ const Important = styled(PriorityHighIcon)`
 `;
 
 const ToDo = (props) => {
-    const [toggle, setToggle] = useState(true)
-    const HandleStrike = () =>{
-        setToggle(value => !value);
-    }
+  const [toggle, setToggle] = useState(true);
+  const HandleStrike = () => {
+    setToggle((value) => !value);
+  };
 
   return (
     <Container>
       <TaskContainer>
         <Task onClick={HandleStrike}>
-            {toggle ? <>Task {props.num}</> : <>Task CrossItem</>}
-            {/* Task {props.num} */}</Task>
+          {toggle ? (
+            <>Task {props.num}</>
+          ) : (
+            <CrossTask>Task {props.num}</CrossTask>
+          )}
+        </Task>
       </TaskContainer>
       <ButtonsContainer>
         <Delete />
